@@ -1,12 +1,16 @@
 :root {
 
-    /*pass*/
+    --text: #e7e9eb;
+    --background: #08090a;
+    --primary: #b1b9c0;
+    --secondary: #5f4c4e;
+    --accent: #918876;
 
 }
 
 body {
 
-    background-color: #000000;
-    color: #ffffff;
+    background-color: var(--background);
+    color: var(--text);
 
 }
