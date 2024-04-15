@@ -14,16 +14,19 @@
 
         <?php
 
+            $data = $_POST; 
+
             $ch = curl_init();
 
             // Initialize curl session
             // Set options
 
-            $code = "54";
+            $code = "72";
 
             $hashcode = password_hash($code, PASSWORD_DEFAULT);
+            $hashcode_len = strlen($hashcode);
 
-            $link = "http://localhost:8000/register.php?code=".$hashcode."";
+            $link = "http://localhost:8000/register.php?code=lol";  //"http://localhost:8000/register.php?code=".$hashcode."";
 
             $lol = "http://127.0.0.1:5000/index?Cc=".$_POST["email"]."&sub=".'LOL'."&body=".$link."";
 
@@ -34,6 +37,47 @@
             $result = curl_exec($ch);// Close curl session
             curl_close($ch);// Output resultecho 
             echo $result;
+
+
+            try {
+
+                $servername = "127.0.0.1";
+                $username = "root";
+                $password = "";
+                $databasename = "concorso";
+
+                $conn = new PDO("mysql:host=$servername; dbname=$databasename", $username, $password);
+                // set the PDO error mode to exception
+                $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //echo "Connected successfully";
+
+                $username = "";
+                $email = $data["email"];
+                $password = "";
+                $tmpcode = "lol"; //str_replace("/", "x", $hashcode, $hashcode_len);
+
+                //echo $name.' '.$surname.' '.$sex.' '.$bday.' '.$city.' '.$zipcode.' '.$class.' '.$course.' '.$email.' '.$password.' ';
+
+
+                $stmt = $conn->prepare("INSERT INTO users (username, email, password, tmpcode) VALUES (:username, :email, :password, :tmpcode)");
+
+                $stmt->bindParam(':username', $username);
+                $stmt->bindParam(':email', $email);
+                $stmt->bindParam(':password', $password);
+                $stmt->bindParam(':tmpcode', $tmpcode);
+
+                if ($stmt->execute()) {
+                    // Insertion successful
+                } else {
+                    // Handle the error
+                    echo "Error: " . $stmt->errorInfo();
+                }
+
+            } catch(PDOException $e) {
+                        
+                echo "Connection failed: " . $e->getMessage();
+
+            }
 
         ?>
 
