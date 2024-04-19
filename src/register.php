@@ -67,7 +67,7 @@
                                                     
                     echo '<div class="container">
                     <h2>Registrazione Utente</h2>
-  <form action="process.php" method="POST">
+  <form action="add.php" method="POST">
   <div class="form-group">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required>

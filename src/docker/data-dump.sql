@@ -75,7 +75,7 @@ CREATE TABLE `privileges` (
   `id` int unsigned NOT NULL AUTO_INCREMENT,
   `type` varchar(100) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,6 +84,11 @@ CREATE TABLE `privileges` (
 
 LOCK TABLES `privileges` WRITE;
 /*!40000 ALTER TABLE `privileges` DISABLE KEYS */;
+INSERT INTO `privileges` VALUES
+(1,'admin'),
+(2,'user'),
+(3,'giuria'),
+(4,'fotografo');
 /*!40000 ALTER TABLE `privileges` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -129,6 +134,8 @@ CREATE TABLE `user_privileges` (
 
 LOCK TABLES `user_privileges` WRITE;
 /*!40000 ALTER TABLE `user_privileges` DISABLE KEYS */;
+INSERT INTO `user_privileges` VALUES
+(14,1);
 /*!40000 ALTER TABLE `user_privileges` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -146,7 +153,7 @@ CREATE TABLE `users` (
   `password` varchar(256) DEFAULT NULL,
   `tmpcode` varchar(256) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,6 +162,8 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
+INSERT INTO `users` VALUES
+(14,'1md0nk3y','jacopino.toma@gmail.com','lol',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -167,4 +176,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-12  9:54:27
+-- Dump completed on 2024-04-19  8:56:26

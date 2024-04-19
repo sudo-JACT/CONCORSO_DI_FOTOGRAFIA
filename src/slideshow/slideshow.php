@@ -14,6 +14,12 @@
     </head>
 
     <body>
+
+        <?php
+
+            var_dump($_GET["user"]);
+
+        ?>
         
     </body>
 
